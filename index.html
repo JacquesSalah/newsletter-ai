@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decomposer — Notícias & Artigos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #111111;
+      --white: #ffffff;
+      --accent: #e8ff00;
+      --gray-light: #f4f4f4;
+      --gray-mid: #d0d0d0;
+      --gray-dark: #555555;
+      --font: 'Roboto', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--white);
+      color: var(--black);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--black);
+      color: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 64px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .logo-icon {
+      width: 38px;
+      height: 38px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .logo-name {
+      font-size: 1.55rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+    }
+
+    .logo-name span {
+      color: var(--accent);
+    }
+
+    /* burger button (mobile) */
+    .burger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      margin: 5px 0;
+      transition: .25s;
+    }
+
+    /* nav bar */
+    .nav-bar {
+      background: #1a1a1a;
+      border-top: 1px solid #333;
+    }
+
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-inner::-webkit-scrollbar { display: none; }
+
+    .nav-inner a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.75rem 1rem;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      transition: color .2s, border-color .2s;
+    }
+    .nav-inner a:hover,
+    .nav-inner a.active {
+      color: var(--white);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 3rem;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--gray-mid);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 0;
+      margin-bottom: 2.5rem;
+      background: var(--black);
+      overflow: hidden;
+      min-height: 440px;
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .6s ease;
+    }
+    .hero:hover .hero-image-wrap img {
+      transform: scale(1.03);
+    }
+
+    .hero-badge {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.2rem;
+      background: var(--accent);
+      color: var(--black);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.8rem 2rem;
+      color: var(--white);
+    }
+
+    .hero-category {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: 1.7rem;
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.3px;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title a {
+      color: var(--white);
+      text-decoration: none;
+    }
+    .hero-title a:hover { text-decoration: underline; }
+
+    .hero-summary {
+      font-size: 0.92rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: #ccc;
+      margin-bottom: auto;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #333;
+      font-size: 0.72rem;
+      color: #888;
+    }
+
+    .hero-author { font-weight: 500; color: #bbb; }
+    .hero-read-more {
+      margin-left: auto;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── NEWS GRID ── */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .news-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      border: 1px solid var(--gray-mid);
+      overflow: hidden;
+      transition: box-shadow .25s, transform .25s;
+      cursor: pointer;
+    }
+
+    .news-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      transform: translateY(-3px);
+    }
+
+    .news-card-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .news-card:hover .news-card-img { transform: scale(1.04); }
+
+    .news-card-img-wrap { overflow: hidden; }
+
+    .news-card-body {
+      padding: 1rem 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .news-card-cat {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+      margin-bottom: 0.45rem;
+    }
+
+    .news-card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--black);
+      text-decoration: none;
+      margin-bottom: 0.5rem;
+      flex: 1;
+    }
+
+    .news-card-title:hover { text-decoration: underline; }
+
+    .news-card-meta {
+      font-size: 0.68rem;
+      color: #999;
+      margin-top: auto;
+    }
+
+    /* ── VER TODAS BUTTON ── */
+    .btn-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 0.5rem 0 3.5rem;
+    }
+
+    .btn-ver-todas {
+      display: inline-block;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 3rem;
+      border: 2px solid var(--black);
+      transition: background .2s, color .2s;
+    }
+    .btn-ver-todas:hover {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border-top: 3px solid var(--accent);
+    }
+
+    .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-logo .logo-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .footer-logo .logo-name {
+      font-size: 1.25rem;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: #666;
+      margin-top: 0.5rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-image-wrap { height: 280px; }
+      .news-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      .header-top { padding: 0 1rem; }
+      main { padding: 1.5rem 1rem 2rem; }
+      .hero-title { font-size: 1.3rem; }
+      .news-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .burger { display: block; }
+      .nav-inner { padding: 0 1rem; }
+    }
+
+    @media (max-width: 440px) {
+      .news-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <div class="header-top">
+    <a class="logo" href="index.html">
+      <div class="logo-icon">
+        <!-- Leaf / decompose icon -->
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.5 2 3 7 3 12c0 3 1.5 5.5 4 7l1-3c-1.5-1-2.5-2.5-2.5-4 0-3.5 2.8-6.5 6.5-6.5S18.5 8.5 18.5 12c0 1.5-.5 3-1.5 4l1 3c2.5-1.5 4-4 4-7C22 7 18.5 2 12 2z" fill="#111"/>
+          <path d="M12 8v8M9 11l3-3 3 3" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <span class="logo-name">De<span>comp</span>oser</span>
+    </a>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav-inner').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="nav-bar">
+    <div class="nav-inner">
+      <a href="index.html" class="active">Início</a>
+      <a href="listing.html">Tecnologia</a>
+      <a href="listing.html">Automóveis</a>
+      <a href="listing.html">Saúde</a>
+      <a href="listing.html">Ciência</a>
+      <a href="listing.html">Economia</a>
+      <a href="listing.html">Cultura</a>
+      <a href="listing.html">Esporte</a>
+      <a href="listing.html">Meio Ambiente</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main>
+
+  <p class="section-label">Destaque principal</p>
+
+  <!-- HERO -->
+  <article class="hero">
+    <div class="hero-image-wrap">
+      <img
+        src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&q=80"
+        alt="Inteligência Artificial"
+        loading="eager"
+      />
+      <span class="hero-badge">Mais recente</span>
+    </div>
+    <div class="hero-text">
+      <div>
+        <p class="hero-category">Tecnologia</p>
+        <h1 class="hero-title">
+          <a href="#">Modelos de IA generativa ultrapassam barreiras cognitivas e redefinem o futuro do trabalho em 2025</a>
+        </h1>
+        <p class="hero-summary">
+          Pesquisadores de três continentes publicam estudo inédito que demonstra como sistemas de inteligência artificial já superam humanos em tarefas complexas de raciocínio analítico — e o impacto no mercado de trabalho pode ser mais profundo e mais rápido do que o esperado.
+        </p>
+      </div>
+      <div class="hero-meta">
+        <span class="hero-author">Por Lucas Ferreira</span>
+        <span>19 mai. 2026 · 5 min de leitura</span>
+        <a class="hero-read-more" href="#">Ler artigo →</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- 4 CARDS -->
+  <p class="section-label" style="margin-top: 2rem;">Últimas notícias</p>
+
+  <div class="news-grid">
+
+    <!-- Card 1 -->
+    <article class="news-card">
+      <div class="news-card-img-wrap">
+        <img class="news-card-img"
+          src="https://images.unsplash.com/photo-1617886903355-9354bb57751f?w=600&q=75"
+          alt="Carro elétrico" loading="lazy" />
+      </div>
+      <div class="news-card-body">
+        <p class="news-card-cat">Automóveis</p>
+        <a class="news-card-title" href="#">Montadoras brasileiras anunciam frota 100% elétrica até 2030 em parceria com governo federal</a>
+        <p class="news-card-meta">18 mai. 2026 · Ana Beatriz Costa</p>
+      </div>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="news-card">
+      <div class="news-card-img-wrap">
+        <img class="news-card-img"
+          src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=75"
+          alt="Saúde" loading="lazy" />
+      </div>
+      <div class="news-card-body">
+        <p class="news-card-cat">Saúde</p>
+        <a class="news-card-title" href="#">Nova vacina de mRNA contra dengue mostra eficácia de 94% em testes clínicos na América Latina</a>
+        <p class="news-card-meta">18 mai. 2026 · Dr. Rafael Mendes</p>
+      </div>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="news-card">
+      <div class="news-card-img-wrap">
+        <img class="news-card-img"
+          src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=75"
+          alt="Economia" loading="lazy" />
+      </div>
+      <div class="news-card-body">
+        <p class="news-card-cat">Economia</p>
+        <a class="news-card-title" href="#">Banco Central eleva Selic para 12,5% ao ano em reação à inflação persistente no setor de serviços</a>
+        <p class="news-card-meta">17 mai. 2026 · Mariana Oliveira</p>
+      </div>
+    </article>
+
+    <!-- Card 4 -->
+    <article class="news-card">
+      <div class="news-card-img-wrap">
+        <img class="news-card-img"
+          src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600&q=75"
+          alt="Ciência espacial" loading="lazy" />
+      </div>
+      <div class="news-card-body">
+        <p class="news-card-cat">Ciência</p>
+        <a class="news-card-title" href="#">Agência Espacial Brasileira confirma lançamento de satélite de monitoramento ambiental para setembro</a>
+        <p class="news-card-meta">17 mai. 2026 · Pedro Alves</p>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- VER TODAS -->
+  <div class="btn-wrap">
+    <a class="btn-ver-todas" href="listing.html">Ver todas as notícias</a>
+  </div>
+
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <a class="footer-logo" href="index.html">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.5 2 3 7 3 12c0 3 1.5 5.5 4 7l1-3c-1.5-1-2.5-2.5-2.5-4 0-3.5 2.8-6.5 6.5-6.5S18.5 8.5 18.5 12c0 1.5-.5 3-1.5 4l1 3c2.5-1.5 4-4 4-7C22 7 18.5 2 12 2z" fill="#111"/>
+        <path d="M12 8v8M9 11l3-3 3 3" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span class="logo-name">De<span>comp</span>oser</span>
+  </a>
+  <p class="footer-copy">© 2026 Decomposer. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
