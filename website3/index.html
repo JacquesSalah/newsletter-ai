@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decomposer — Notícias & Artigos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <div class="header-top">
+    <a class="logo" href="index.html">
+      <div>
+        <img class="logo-image-top" src="./assets/decomposer_logo_horizontal_dark.png" alt="DECOMPOSER">
+      </div>      
+    </a>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav-inner').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <nav class="nav-bar">
+    <div class="nav-inner">
+      <a href="index.html" class="active">Home</a>
+      <a href="listing.html">Tecnology</a>
+      <a href="listing.html">Automotives</a>
+      <a href="listing.html">Healthcare</a>
+      <a href="listing.html">Home Appliances</a>
+      <a href="listing.html">Finance</a>      
+      <a href="listing.html">Food and Beverage</a>
+      <a href="listing.html">Agriculture</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main>
+
+  <p class="section-label">Main article</p>
+
+  <!-- HERO -->
+  <article class="hero">
+    <div class="hero-image-wrap">
+      <a href="./articles/lgrepair_article/lgrepair_article.html">
+      <img
+        src="./articles/lgrepair_article/lgrepair.png"
+        alt="LG Repair"
+        loading="eager"
+      />
+      </a>
+      <span class="hero-badge">Most recent</span>
+    </div>
+    <div class="hero-text">
+      <div>
+        <p class="hero-category">Home Appliances</p>
+        <h1 class="hero-title">
+          <a href="./articles/lgrepair_article/lgrepair_article.html">For Appliance Buyers, the Journey Breaks Down When the Repair Process Begins</a>
+        </h1>
+        <p class="hero-summary">
+          LG’s weakest post-purchase moment is not product setup or delivery, but the point when owners need technical help and discover how hard service is to secure.
+        </p>
+      </div>
+      <div class="hero-meta">
+        <span class="hero-author">By Davi Zimbardi</span>
+        <span>May 19. 2026 · 5 min read</span>
+        <a class="hero-read-more" href="./articles/lgrepair_article/lgrepair_article.html">Read article →</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- 4 CARDS -->
+  <p class="section-label" style="margin-top: 2rem;">Latest news</p>
+
+  <div class="news-grid">
+
+    <!-- Card 1 -->
+    <article class="news-card">
+      <div class="news-card-img-wrap">
+        <a href="./articles/byd_postsales_article/byd_postsales_article.html">
+        <img class="news-card-img"
+          src="./articles/byd_postsales_article/bydsales.png"
+          alt="BYD Sales" loading="lazy" />
+        </a>
+      </div>
+      <div class="news-card-body">
+        <p class="news-card-cat">Automotives</p>
+        <a class="news-card-title" href="./articles/byd_postsales_article/byd_postsales_article.html">BYD’s biggest breakdown comes after the sale, when routine service turns into a dead end</a>
+        <p class="news-card-meta">May 18. 2026 · Davi Zimbardi</p>
+      </div>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="news-card">
+      
+      <div class="news-card-img-wrap">
+        <a href="./articles/byd_article/byd_article.html">
+        <img class="news-card-img"
+          src="./articles/byd_article/Notícia BYD_html_ad38ae59d59396a8.png"
+          alt="Automóveis" loading="lazy" />
+        </a>
+      </div>
+      <div class="news-card-body">
+        <p class="news-card-cat">Automotives</p>
+        <a class="news-card-title" href="./articles/byd_article/byd_article.html">BYD Reviews Receive Strong
+Consumer Approval and Highlight Efficiency in After-Sales Service</a>
+        <p class="news-card-meta">May 19. 2026 · Vitor Perrone</p>
+      </div>
+    
+    </article>
+
+    <!-- Card 3 -->
+    <article class="news-card">
+      
+      <div class="news-card-img-wrap">
+        <a href="./articles/lg_article/lg_article.html">
+        <img class="news-card-img"
+          src="./articles/lg_article/entrega_atraso.png"
+          alt="LG" loading="lazy" />
+        </a>
+      </div>
+      <div class="news-card-body">
+        <p class="news-card-cat">Tecnologia</p>
+        <a class="news-card-title" href="./articles/lg_article/lg_article.html">Consumers report missed
+deadlines, lack of order updates, and difficulty obtaining clear
+answers from support</a>
+        <p class="news-card-meta">May 19. 2026 · Vitor Perrone</p>
+      </div>
+    
+    </article>
+
+    <!-- Card 4 -->
+    <article class="news-card">
+      <div class="news-card-img-wrap">
+        <img class="news-card-img"
+          src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600&q=75"
+          alt="Ciência espacial" loading="lazy" />
+      </div>
+      <div class="news-card-body">
+        <p class="news-card-cat">Ciência</p>
+        <a class="news-card-title" href="#">Agência Espacial Brasileira confirma lançamento de satélite de monitoramento ambiental para setembro</a>
+        <p class="news-card-meta">May 17. 2026 · Pedro Alves</p>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- VER TODAS -->
+  <div class="btn-wrap">
+    <a class="btn-ver-todas" href="listing.html">See all articles</a>
+  </div>
+
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <a class="footer-logo" href="index.html">
+    <div>
+      <img class="logo-image-bottom" src="./assets/decomposer_logo_horizontal_dark.png" alt="DECOMPOSER">
+    </div>    
+  </a>
+  <p class="footer-copy">© 2026 Decomposer. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
