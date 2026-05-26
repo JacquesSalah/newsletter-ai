@@ -610,3 +610,235 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
+  
+/* ── ARTICLE PAGE SPECIFIC ── */
+
+
+.article-banner {
+    width: 100%;
+    max-height: 480px;
+    object-fit: contain;
+    display: block;
+    background-color: #111111;
+}
+
+
+.article-wrapper {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+}
+
+
+.article-category {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--accent);
+    padding: 3px 10px;
+    margin-bottom: 1.25rem;
+    text-decoration: none;
+}
+.article-category:hover {
+    opacity: 0.8;
+}
+
+
+.article-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+    color: var(--black);
+}
+
+
+.article-lead {
+    font-size: 1.1rem;
+    font-weight: 300;
+    line-height: 1.65;
+    color: #444;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+}
+
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--gray-mid);
+    border-bottom: 1px solid var(--gray-mid);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.article-author-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.article-author {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--black);
+}
+
+.article-date {
+    font-size: 0.72rem;
+    color: var(--gray-dark);
+}
+
+
+.article-body {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #222;
+}
+
+.article-body p {
+    margin-bottom: 1.4rem;
+}
+
+.article-body h2 {
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: -0.3px;
+    margin: 2.5rem 0 0.75rem;
+    color: var(--black);
+}
+
+.article-body h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 2rem 0 0.6rem;
+    color: var(--black);
+}
+
+.article-body blockquote {
+    margin: 2rem 0;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid var(--accent);
+    background: var(--gray-light);
+    font-size: 1.05rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.7;
+    color: #333;
+}
+
+.article-body blockquote cite {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray-dark);
+}
+
+.article-body figure {
+    margin: 2rem 0;
+}
+
+.article-body figure img {
+    width: 100%;
+    display: block;
+}
+
+.article-body figcaption {
+    font-size: 0.72rem;
+    color: var(--gray-dark);
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+
+.article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--gray-mid);
+    align-items: center;
+}
+
+.article-tags-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-dark);
+    margin-right: 0.25rem;
+}
+
+.article-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--black);
+    border: 1px solid var(--gray-mid);
+    padding: 4px 12px;
+    transition: background .15s, border-color .15s;
+}
+.article-tag:hover {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--black);
+}
+
+
+.article-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--gray-dark);
+    margin-bottom: 2rem;
+    transition: color .15s;
+}
+.article-back:hover {
+    color: var(--black);
+}
+.article-back::before {
+    content: "←";
+    font-size: 0.9rem;
+}
+
+
+@media (max-width: 640px) {
+    .article-title {
+    font-size: 1.5rem;
+    }
+    .article-lead {
+    font-size: 0.95rem;
+    }
+    .article-wrapper {
+    padding: 1.5rem 1rem 3rem;
+    }
+    .article-banner {
+    max-height: 220px;
+    }
+}
+.article-body ul {
+  padding-left: 24px; /* efeito de "tab" */
+}
+
